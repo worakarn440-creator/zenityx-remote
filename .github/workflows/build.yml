@@ -43,4 +43,8 @@ jobs:
         with: { path: out, merge-multiple: true }
       - name: Create release
         env: { GH_TOKEN: '${{ github.token }}' }
-        run: gh release create "${{ github.ref_name }}" out/* --repo "${{ github.repository }}" --title "ZenityX Remote ${{ github.ref_name }}" --notes "ดาวน์โหลดไฟล์ให้ตรงกับเครื่อง: Windows = ZenityX-Remote.exe, Mac ชิป Apple (M1/M2/M3/M4) = ...arm64.dmg, Mac Intel = ...x64.dmg"
+        run: |
+          gh release create "${{ github.ref_name }}" out/* \
+            --repo "${{ github.repository }}" \
+            --title "ZenityX Remote ${{ github.ref_name }}" \
+            --notes "Windows = ZenityX-Remote.exe | Mac Apple chip (M1-M4) = arm64.dmg | Mac Intel = x64.dmg"

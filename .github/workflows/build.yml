@@ -1,0 +1,46 @@
+name: Build ZenityX Remote
+
+# รันเมื่อกด Run workflow เอง หรือเมื่อ push tag รูปแบบ v* (เช่น v0.1.0) แล้วจะสร้าง Release ให้อัตโนมัติ
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: npm ci
+      - run: npm run dist
+        env: { CSC_IDENTITY_AUTO_DISCOVERY: 'false' }
+      - uses: actions/upload-artifact@v4
+        with: { name: windows, path: dist/ZenityX-Remote.exe }
+
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: npm ci
+      - run: npm run dist:mac
+        env: { CSC_IDENTITY_AUTO_DISCOVERY: 'false' }
+      - uses: actions/upload-artifact@v4
+        with: { name: mac, path: 'dist/*.dmg' }
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [windows, mac]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { path: out, merge-multiple: true }
+      - name: Create release
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: gh release create "${{ github.ref_name }}" out/* --repo "${{ github.repository }}" --title "ZenityX Remote ${{ github.ref_name }}" --notes "ดาวน์โหลดไฟล์ให้ตรงกับเครื่อง: Windows = ZenityX-Remote.exe, Mac ชิป Apple (M1/M2/M3/M4) = ...arm64.dmg, Mac Intel = ...x64.dmg"

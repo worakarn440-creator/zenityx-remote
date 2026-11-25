@@ -1,0 +1,38 @@
+{
+  "name": "zenityx-remote",
+  "productName": "ZenityX Remote",
+  "version": "0.1.0",
+  "description": "แอปรีโมทหน้าจอฟรี สำหรับครูช่วยนักเรียน",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "server": "node server/server.js",
+    "dist": "electron-builder --win portable --x64",
+    "dist:mac": "electron-builder --mac dmg --x64 --arm64"
+  },
+  "author": "ZenityX",
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "4.2.6"
+  },
+  "devDependencies": {
+    "electron": "45.5.0",
+    "electron-builder": "26.18.0",
+    "ws": "8.23.0"
+  },
+  "build": {
+    "appId": "com.zenityx.remote",
+    "productName": "ZenityX Remote",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "src/**", "renderer/**", "config.default.json", "package.json"],
+    "asarUnpack": ["node_modules/@nut-tree-fork/**", "node_modules/@nut-tree/**"],
+    "win": { "target": ["portable"], "artifactName": "ZenityX-Remote.exe" },
+    "mac": {
+      "target": ["dmg"],
+      "artifactName": "ZenityX-Remote-Mac-${arch}.${ext}",
+      "category": "public.app-category.education",
+      "identity": null,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    }
+  }
+}

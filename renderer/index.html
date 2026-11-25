@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src ws: wss: http: https:; media-src 'self' blob: mediastream:; style-src 'self' 'unsafe-inline'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZenityX Remote</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- หน้าหลัก -->
+<main id="view-home">
+  <header>
+    <h1>ZenityX Remote</h1>
+    <span id="status" class="chip chip-wait">กำลังเชื่อมต่อ…</span>
+  </header>
+
+  <section id="hostBanner" class="banner" hidden>
+    <div id="hostBannerText">กำลังแชร์หน้าจอ</div>
+    <button id="stopShareBtn" class="btn btn-danger">หยุดแชร์</button>
+  </section>
+
+  <section class="card">
+    <h2>รหัสเครื่องของคุณ</h2>
+    <p class="hint">บอกรหัสนี้กับครูเพื่อให้ครูช่วยดูหน้าจอ</p>
+    <div id="myId" class="bigid">--- --- ---</div>
+    <button id="copyBtn" class="btn btn-ghost">คัดลอกรหัส</button>
+    <p id="permHint" class="msg err" hidden></p>
+  </section>
+
+  <section class="card">
+    <h2>เชื่อมต่อไปยังเครื่องอื่น</h2>
+    <p class="hint">ใส่รหัส 9 หลักของเครื่องที่ต้องการดู</p>
+    <input id="peerId" inputmode="numeric" maxlength="11" placeholder="000 000 000" autocomplete="off">
+    <button id="connectBtn" class="btn btn-primary">เชื่อมต่อ</button>
+    <button id="cancelBtn" class="btn btn-ghost" hidden>ยกเลิก</button>
+    <p id="connMsg" class="msg"></p>
+  </section>
+
+  <footer>ฟรี ไม่มีโฆษณา · ปลายทางต้องกด “อนุญาต” ก่อนทุกครั้ง</footer>
+</main>
+
+<!-- หน้าดูหน้าจอ -->
+<main id="view-stage" hidden>
+  <div id="toolbar">
+    <span id="stageStatus">กำลังเชื่อมต่อ…</span>
+    <span class="spacer"></span>
+    <button id="fsBtn" class="btn btn-ghost btn-sm">เต็มจอ</button>
+    <button id="disconnectBtn" class="btn btn-danger btn-sm">ตัดการเชื่อมต่อ</button>
+  </div>
+  <div id="stage"><video id="remote" autoplay playsinline muted></video></div>
+</main>
+
+<!-- หน้าต่างขออนุญาต -->
+<div id="modal" class="modal" hidden>
+  <div class="modal-box">
+    <h2>มีคนขอดูหน้าจอของคุณ</h2>
+    <p id="modalText"></p>
+    <div class="modal-actions">
+      <button id="allowCtl" class="btn btn-primary">อนุญาต ดูและควบคุมได้</button>
+      <button id="allowView" class="btn btn-ghost">อนุญาต ดูอย่างเดียว</button>
+      <button id="denyBtn" class="btn btn-danger">ไม่อนุญาต</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+<script src="renderer.js"></script>
+</body>
+</html>

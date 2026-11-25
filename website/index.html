@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZenityX Remote — โหลดแอปรีโมทหน้าจอ</title>
+<meta name="description" content="แอปรีโมทหน้าจอฟรี ให้ครูช่วยดูและแก้ปัญหาเครื่องนักเรียนได้จากที่บ้าน">
+<style>
+:root{--bg:#0b1220;--card:#162033;--line:#2a3955;--text:#f1f5f9;--muted:#9fb0c8;--primary:#2563eb;--primary2:#1d4ed8;--ok:#22c55e;--warn:#f59e0b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Leelawadee UI","Segoe UI",Tahoma,sans-serif;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+header.hero{text-align:center;padding:52px 0 36px}
+.logo{display:inline-flex;align-items:center;justify-content:center;width:68px;height:68px;border-radius:18px;background:linear-gradient(135deg,#2563eb,#7c3aed);font-size:34px;margin-bottom:14px}
+h1{font-size:34px;margin:0 0 8px}
+.sub{color:var(--muted);font-size:18px;margin:0 auto 26px;max-width:520px}
+.dl{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;font-weight:700;font-size:22px;padding:18px 38px;border-radius:14px;box-shadow:0 8px 26px rgba(37,99,235,.4);transition:.15s}
+.dl:hover{background:var(--primary2);transform:translateY(-1px)}
+.meta{color:var(--muted);font-size:14px;margin-top:14px;max-width:560px;margin-left:auto;margin-right:auto}
+.dlgroup{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.dl small{display:block;font-weight:400;font-size:13px;opacity:.85}
+.dl-mac{background:#334155;box-shadow:0 8px 26px rgba(0,0,0,.35)}
+.dl-mac:hover{background:#475569}
+.os{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:1px 8px;margin-right:6px;vertical-align:1px}
+.os-w{background:#0b5cad;color:#fff}.os-m{background:#475569;color:#fff}
+ol.sm{margin:8px 0 0;padding-left:22px;color:var(--muted)}ol.sm li{margin:4px 0}ol.sm b{color:var(--text)}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.badge{background:#13324a;color:#b6e3ff;border-radius:999px;font-size:13px;padding:4px 12px}
+section{margin:34px 0}
+h2{font-size:24px;margin:0 0 16px}
+.step{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px}
+.num{flex:none;width:42px;height:42px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
+.step h3{margin:2px 0 4px;font-size:19px}
+.step p{margin:0;color:var(--muted)}
+.step b{color:var(--text)}
+.mock{margin-top:12px;background:#0b1220;border:1px solid var(--line);border-radius:10px;padding:14px;font-size:15px}
+.mock .win{background:#e8eefc;color:#111;border-radius:8px;padding:14px 16px;max-width:420px}
+.mock .win .t{font-weight:700;color:#0b3a8a;margin-bottom:6px}
+.mock .win a,.mock .win .lnk{color:#1a56db;text-decoration:underline;font-weight:600}
+.mock .btnrow{display:flex;gap:8px;margin-top:10px;justify-content:flex-end}
+.mock .b{padding:6px 14px;border-radius:4px;font-size:14px;font-weight:600}
+.mock .b1{background:#1a56db;color:#fff;outline:3px solid var(--warn);outline-offset:2px}
+.mock .b2{background:#fff;border:1px solid #9aa7c2;color:#111}
+.id{font-size:30px;font-weight:800;letter-spacing:3px;text-align:center;background:#0b1220;border:1px dashed var(--line);border-radius:10px;padding:10px;margin-top:10px}
+.hl{outline:3px solid var(--warn);outline-offset:2px;border-radius:4px}
+.note{background:#2a2108;border:1px solid #6b5316;color:#fde68a;border-radius:12px;padding:14px 16px;font-size:15px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700;font-size:17px}
+details p{margin:8px 0 0;color:var(--muted)}
+.cta{text-align:center;padding:10px 0 50px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:0 0 40px}
+@media(max-width:520px){h1{font-size:28px}.dl{font-size:19px;padding:16px 26px}.step{padding:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="logo">🖥️</div>
+  <h1>ZenityX Remote</h1>
+  <p class="sub">แอปให้ครูช่วยดูหน้าจอและแก้ปัญหาเครื่องของคุณได้จากที่บ้าน ฟรี ใช้ง่าย ไม่ต้องติดตั้ง</p>
+  <div class="dlgroup">
+    <a class="dl" data-os="win" href="#">⬇ Windows</a>
+    <a class="dl dl-mac" data-os="arm" href="#">⬇ Mac ชิป Apple<small>M1 / M2 / M3 / M4</small></a>
+    <a class="dl dl-mac" data-os="intel" href="#">⬇ Mac ชิป Intel<small>Mac รุ่นเก่า</small></a>
+  </div>
+  <div class="meta">ประมาณ 100 MB · Windows 10/11 และ macOS<br>ไม่รู้ว่า Mac ชิปอะไร? กดเมนู  (Apple) → <b>เกี่ยวกับ Mac เครื่องนี้</b> → ดูที่คำว่า <b>ชิป</b> (Chip) ถ้าเป็น Apple M… ให้เลือกปุ่มกลาง ถ้าเป็น Intel ให้เลือกปุ่มขวา</div>
+  <div class="badges"><span class="badge">ฟรี 100%</span><span class="badge">ไม่ต้องติดตั้ง</span><span class="badge">ต้องกดอนุญาตก่อนทุกครั้ง</span></div>
+</header>
+
+<section>
+  <h2>วิธีใช้ 3 ขั้นตอน</h2>
+
+  <div class="step"><div class="num">1</div><div style="flex:1">
+    <h3>ดาวน์โหลดไฟล์</h3>
+    <p>กดปุ่ม <b>“ดาวน์โหลด”</b> ด้านบน รอจนไฟล์โหลดเสร็จ (ไฟล์อยู่ในโฟลเดอร์ <b>Downloads</b>)</p>
+    <p style="margin-top:8px">ถ้า Chrome ขึ้นเตือนว่าไฟล์ไม่ค่อยมีคนดาวน์โหลด ให้กดที่ <b>⋮</b> แล้วเลือก <b>“เก็บไว้” (Keep)</b> นี่เป็นปกติ เพราะแอปใหม่ ครูเป็นคนสร้างเอง</p>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div style="flex:1">
+    <h3>เปิดแอป</h3>
+    <p><span class="os os-w">Windows</span>ดับเบิลคลิกไฟล์ <b>ZenityX-Remote.exe</b> ถ้า Windows ขึ้นหน้าต่างสีฟ้าแบบนี้ ให้ทำตามภาพ:</p>
+    <div class="mock">
+      <div class="win">
+        <div class="t">Windows protected your PC</div>
+        <div>Microsoft Defender SmartScreen prevented an unrecognized app from starting.</div>
+        <div style="margin-top:8px"><span class="lnk hl">More info</span> ← กดตรงนี้ก่อน</div>
+        <div class="btnrow"><span class="b b1">Run anyway</span><span class="b b2">Don't run</span></div>
+      </div>
+      <p style="margin:10px 0 0;color:var(--muted);font-size:14px">กด <b style="color:var(--text)">More info</b> แล้วจะมีปุ่ม <b style="color:var(--text)">Run anyway</b> โผล่ขึ้นมา ให้กดปุ่มนั้น</p>
+    </div>
+    <p style="margin-top:16px"><span class="os os-m">Mac</span>ทำตามนี้:</p>
+    <ol class="sm">
+      <li>ดับเบิลคลิกไฟล์ <b>.dmg</b> ที่โหลดมา แล้ว <b>ลากไอคอน ZenityX Remote ไปใส่โฟลเดอร์ Applications</b></li>
+      <li>เปิด <b>ZenityX Remote</b> จาก Applications (หรือ Launchpad) ครั้งแรกจะขึ้นว่า <b>“ไม่สามารถเปิดได้”</b> ให้กด “เสร็จสิ้น” ก่อน</li>
+      <li>ไปที่ <b>การตั้งค่าระบบ → ความเป็นส่วนตัวและความปลอดภัย</b> เลื่อนลงล่างสุด กดปุ่ม <b>“เปิดแต่อย่างไรก็ตาม” (Open Anyway)</b> แล้วใส่รหัสผ่านเครื่อง</li>
+      <li>เปิดแอปอีกครั้ง กด <b>“เปิด”</b></li>
+    </ol>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div style="flex:1">
+    <h3>บอกรหัสให้ครู แล้วกด “อนุญาต”</h3>
+    <p>เปิดแอปแล้วจะเห็น <b>รหัส 9 หลัก</b> ของเครื่องคุณ ส่งรหัสนี้ให้ครูทางแชต</p>
+    <div class="id">123 456 789</div>
+    <p style="margin-top:10px">เมื่อครูกดเชื่อมต่อ จะมีหน้าต่างถามบนจอคุณ ให้กด <b>“อนุญาต”</b> ถ้าไม่รู้จักผู้ขอ ให้กด “ไม่อนุญาต”</p>
+    <p style="margin-top:8px">อยากหยุดเมื่อไรก็กดปุ่มสีแดง <b>“หยุดแชร์”</b> ได้ทันที</p>
+    <p style="margin-top:14px"><span class="os os-m">Mac</span>เครื่อง Mac ต้องเปิดสิทธิ์ 2 อย่างก่อน (ทำครั้งเดียว) ที่ <b>การตั้งค่าระบบ → ความเป็นส่วนตัวและความปลอดภัย</b></p>
+    <ol class="sm">
+      <li><b>การบันทึกหน้าจอ (Screen Recording)</b> → เปิดสวิตช์ให้ ZenityX Remote เพื่อให้ครูเห็นจอ</li>
+      <li><b>การช่วยการเข้าถึง (Accessibility)</b> → เปิดสวิตช์ให้ ZenityX Remote เพื่อให้ครูควบคุมเมาส์/คีย์บอร์ดได้</li>
+      <li>หลังเปิดสิทธิ์ ให้ <b>ปิดแอปแล้วเปิดใหม่</b> ถ้าจะให้ครูแค่ดู ใช้แค่ข้อ 1 ก็พอ</li>
+    </ol>
+  </div></div>
+</section>
+
+<div class="note">
+  🔒 <b>ปลอดภัยแค่ไหน?</b> ครูเข้าเครื่องคุณไม่ได้ถ้าคุณไม่กดอนุญาต และเลือก “ดูอย่างเดียว” ได้ ปิดแอปเมื่อไรก็ตัดการเชื่อมต่อทันที ภาพหน้าจอถูกเข้ารหัสระหว่างทาง
+</div>
+
+<section>
+  <h2>เจอปัญหา?</h2>
+  <details><summary>ปุ่ม “Run anyway” ไม่ขึ้น</summary><p>ต้องกดคำว่า <b>More info</b> (ตัวหนังสือสีน้ำเงินใต้ข้อความ) ก่อน ปุ่ม Run anyway จึงจะโผล่ขึ้นมา</p></details>
+  <details><summary>ดับเบิลคลิกแล้วไม่มีอะไรเกิดขึ้น</summary><p>รอสักครู่ 5–10 วินาที แอปเปิดครั้งแรกจะช้ากว่าปกติ ถ้ายังไม่ขึ้น ให้คลิกขวาที่ไฟล์ → เลือก “เปิด” แล้วแจ้งครู</p></details>
+  <details><summary>ขึ้นว่า “กำลังเชื่อมต่อเซิร์ฟเวอร์…” ไม่หาย</summary><p>เช็กว่าอินเทอร์เน็ตใช้ได้ ปิดแล้วเปิดแอปใหม่ ถ้ายังไม่หาย ให้แจ้งครู</p></details>
+  <details><summary>ครูขอเชื่อมต่อแต่ไม่เห็นหน้าต่างอนุญาต</summary><p>ดูที่แถบงานด้านล่างจอ ไอคอนแอปอาจกะพริบอยู่ ให้คลิกที่ไอคอนนั้น</p></details>
+  <details><summary>Mac: ครูเห็นหน้าจอเป็นสีดำ / ควบคุมไม่ได้</summary><p>แปลว่ายังไม่ได้เปิดสิทธิ์ <b>การบันทึกหน้าจอ</b> และ <b>การช่วยการเข้าถึง</b> ตามขั้นตอนที่ 3 ด้านบน เปิดแล้วต้องปิดแอปแล้วเปิดใหม่</p></details>
+  <details><summary>Mac: หาปุ่ม “เปิดแต่อย่างไรก็ตาม” ไม่เจอ</summary><p>ต้องพยายามเปิดแอปก่อน 1 ครั้งจนขึ้นข้อความว่าเปิดไม่ได้ แล้วค่อยไปที่ การตั้งค่าระบบ → ความเป็นส่วนตัวและความปลอดภัย เลื่อนลงล่างสุดจะเห็นปุ่ม (ปุ่มจะอยู่ให้กดแค่ประมาณ 1 ชั่วโมงหลังพยายามเปิด)</p></details>
+  <details><summary>ใช้กับมือถือ / iPad ได้ไหม?</summary><p>ยังไม่ได้ ตอนนี้ใช้ได้กับคอมพิวเตอร์ <b>Windows 10/11</b> และ <b>Mac</b> เท่านั้น</p></details>
+  <details><summary>ครูใช้ Windows นักเรียนใช้ Mac (หรือกลับกัน) ได้ไหม?</summary><p>ได้ ใช้ข้ามกันได้ แอปจะแปลงปุ่ม Ctrl ↔ Command ให้เอง เช่น กด Ctrl+C ก็เป็นคัดลอกบน Mac</p></details>
+  <details><summary>แอปนี้ปลอดภัยไหม ทำไม Windows ถึงเตือน?</summary><p>Windows เตือนกับแอปทุกตัวที่ผู้พัฒนายังไม่ได้ซื้อใบรับรองเซ็นชื่อ (ราคาแพง) ไม่ได้แปลว่ามีไวรัส ดาวน์โหลดจากหน้านี้ที่ครูให้ลิงก์เท่านั้น อย่าโหลดจากที่อื่น</p></details>
+</section>
+
+<div class="cta">
+  <div class="dlgroup">
+    <a class="dl" data-os="win" href="#">⬇ Windows</a>
+    <a class="dl dl-mac" data-os="arm" href="#">⬇ Mac ชิป Apple<small>M1 / M2 / M3 / M4</small></a>
+    <a class="dl dl-mac" data-os="intel" href="#">⬇ Mac ชิป Intel<small>Mac รุ่นเก่า</small></a>
+  </div>
+</div>
+
+<footer>ZenityX Remote · ฟรี ไม่มีโฆษณา</footer>
+</div>
+
+<script>
+  // ใส่ลิงก์ดาวน์โหลดแต่ละไฟล์ตรงนี้
+  var LINKS = { win: "", arm: "", intel: "" };
+  document.querySelectorAll("a.dl[data-os]").forEach(function(a){
+    var url = LINKS[a.dataset.os];
+    if (url) { a.href = url; }
+    else { a.addEventListener("click", function(e){ e.preventDefault(); alert("ยังไม่ได้ตั้งลิงก์ดาวน์โหลด"); }); }
+  });
+  // ไฮไลต์ปุ่มให้ตรงกับเครื่องที่เปิดหน้านี้
+  var ua = navigator.userAgent;
+  if (/Mac/.test(ua) && !/iPhone|iPad/.test(ua)) { document.querySelectorAll(".dl[data-os=win]").forEach(function(a){ a.style.opacity=.6; }); }
+  else if (/Windows/.test(ua)) { document.querySelectorAll(".dl-mac").forEach(function(a){ a.style.opacity=.6; }); }
+</script>
+</body>
+</html>
